@@ -19,4 +19,13 @@
         </div>
 	</div>
 
+    <h3>Dans la même catégorie</h3>
+	<div class="row">
+        {% for product in products %}
+            <div class="col-md-3">
+                {% include 'product/miniature.html.twig' %}
+            </div>
+        {% endfor %}
+	</div>
+
 {% endblock %}
