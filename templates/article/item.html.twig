@@ -1,0 +1,11 @@
+{% set article_show = path('article', {'slug': article.slug }) %}
+<article>
+{% if article.featuredImage %}
+    <a href="{{ article_show }}">
+        <img src="/uploads/{{article.featuredImage.filename}}" alt="{{ article.featuredImage.altText }}">
+    </a>
+{% endif %}
+<a href="{{ article_show }}">{{ article.title }}</a>
+<p>{{ article.createdAt|date('d M Y')}}</p>
+<p>{{ article.featuredText ?: article.content|striptags|slice(0, 130)}}</p>
+</article>

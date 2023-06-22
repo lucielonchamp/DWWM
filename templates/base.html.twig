@@ -1,4 +1,6 @@
-<!doctype html>
+{% set menus = menu_service.findAll %}
+{% set categories = menu_categories() %}
+<!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
@@ -38,6 +40,24 @@
 	</head>
 	<body>
 		<header>
+			{{ include('component/menu.html.twig') }}
+			<ul class="nav nav-pills align-items-center">
+				{% for menu in menus %}
+					{% if menu.subMenus.count > 0 %}
+								<span class="menu-label">{{ menu.name }}</span>
+								{% for subMenu in menu.subMenus %}
+									<a class="dropdown-item" href="{{ subMenu|menuLink }}">{{ subMenu.name }}</a>
+								{% endfor %}
+					{% else %}
+						<li class="nav-item">
+							<a href="{{ menu|menuLink }}" class="nav-link">
+								<span class="menu-label">{{ menu.name }}</span>
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 				<a class="navbar-brand" href="{{ path('home') }}">Ma boutique</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

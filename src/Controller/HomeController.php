@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Classe\Mail;
+use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\Header;
 use App\Entity\Product;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,10 +28,14 @@ class HomeController extends AbstractController
     {
         $products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
         $headers = $this->entityManager->getRepository(Header::class)->findAll();
+        $articles = $this->entityManager->getRepository(Article::class)->findAll();
+        $categories = $this->entityManager->getRepository(Category::class)->findAll();
 
         return $this->render('home/index.html.twig', [
             'products' => $products,
             'headers' => $headers,
+            'articles' => $articles,
+            'categories' => $categories,
         ]);
     }
 }
