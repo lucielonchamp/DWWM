@@ -39,6 +39,9 @@ class Product
     #[ORM\Column]
     private ?bool $isBest = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_seo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +139,18 @@ class Product
     public function setIsBest(bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    public function getDescriptionSeo(): ?string
+    {
+        return $this->description_seo;
+    }
+
+    public function setDescriptionSeo(?string $description_seo): static
+    {
+        $this->description_seo = $description_seo;
 
         return $this;
     }
