@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+h1, .h1 {
+  font-family: "Open Sans";
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 99px;
+  text-transform: uppercase;
+}
+
+h2, .h2 {
+  font-family: "Open Sans";
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 65px;
+  text-transform: uppercase;
+}
+
+h3, .h3 {
+  font-family: "Open Sans";
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 49px;
+  text-transform: uppercase;
+}
+
+h4, .h4 {
+  font-family: "Open Sans";
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+.seo {
+  font-size: 13px;
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 40px;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+}
+
+p, .p {
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+p.p-bold {
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+p.p-space {
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+
+.specific {
+  font-family: "Bebas Neue";
+  font-size: 41px;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=theme.css.map */
