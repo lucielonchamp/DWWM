@@ -101,18 +101,6 @@
 		</header>
 
 		<main role="main">
-			<div>
-				<h1>Brasserie du nord</h1>
-				<h2>Brasserie du nord</h2>
-				<h3>Brasserie du nord</h3>
-				<h4>Brasserie du nord</h4>
-				<h1 class="seo">Brasserie du nord</h1>
-				<p class="title">Brasserie du nord</p>
-				<p>Brasserie du nord</p>
-				<p class="p-bold">Brasserie du nord</p>
-				<p class="p-space">Brasserie du nord</p>
-				<p class="specific">Brasserie du nord</p>
-			</div>
 			{% if block('carousel') is defined %}
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<ol class="carousel-indicators">
@@ -153,7 +141,9 @@
 						    ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
-			<div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}"> {% block content %}{% endblock %}
+			<div class="
+			{# container #}
+			marketing {% if block('carousel') is not defined %}mt-5{% endif %}"> {% block content %}{% endblock %}
 
 
 				</div>

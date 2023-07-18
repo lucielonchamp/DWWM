@@ -6,6 +6,7 @@ use App\Classe\Mail;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\Header;
+use App\Entity\Home;
 use App\Entity\Product;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,12 +31,14 @@ class HomeController extends AbstractController
         $headers = $this->entityManager->getRepository(Header::class)->findAll();
         $articles = $this->entityManager->getRepository(Article::class)->findAll();
         $categories = $this->entityManager->getRepository(Category::class)->findAll();
+        $var_home = $this->entityManager->getRepository(Home::class)->findAll();
 
         return $this->render('home/index.html.twig', [
             'products' => $products,
             'headers' => $headers,
             'articles' => $articles,
             'categories' => $categories,
+            'var_home' => $var_home,
         ]);
     }
 }

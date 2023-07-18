@@ -16,59 +16,42 @@
 	</div>
 	<!-- /.row -->
 
+	<div class="home-banner">
+		<img class="logo-brasserie" src="../assets/img/logo-chtimiste.png" alt="logo de la brasserie">
+		<span class="h2">Brasserie</span>
+		<h1>La Ch'timiste</h1>
+	</div>
 
-	<!-- START THE FEATURETTES -->
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette">
-		<div class="col-md-7">
-			<h2 class="featurette-heading">First featurette heading.
-				<span class="text-muted">It’ll blow your mind.</span>
-			</h2>
-			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		</div>
-		<div class="col-md-5">
-			<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
-				<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-			</svg>
+	<div class="home-block1">
+		<div class="row">
+			{# {{ dump(var_home) }} #}
+			{% for home in var_home %}
+				<div class="col-md-5 home-block1_img">
+					<img src="/uploads/{{ home.block1Img }}">
+					<img class="img-absolute_top" src="../assets/img/stock-vector-brewery-vintage-poster-beer-glass-with-foam-and-bubbles-vector-illustration-layered-separate-1065660812.jpg">
+					<img class="img-absolute_bottom" src="../assets/img/stock-vector-vintage-style-mug-of-beer-264498053.jpg">
+				</div>
+				<div class="col-md-5 home-block1_text">
+					<h2 class="home-block1_text-seo seo ">{{ home.block1TitleSeo }}</h2>
+					<p class="home-block1_text-title h2">{{ home.block1Title }}</p>
+					<p class="home-block1_text-text">{{ home.block1Text | raw }}</p>
+					<a href="{{ home.block1BtnLink }}" type="button" class="home-block1_text-text a-link">{{ home.block1Btn }}</a>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
 
-	<hr class="featurette-divider">
-
-	<div class="row featurette">
-		<div class="col-md-7 order-md-2">
-			<h2 class="featurette-heading">Oh yeah, it’s that good.
-				<span class="text-muted">See for yourself.</span>
-			</h2>
-			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		</div>
-		<div class="col-md-5 order-md-1">
-			<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
-				<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-			</svg>
-		</div>
-	</div>
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette">
-		<div class="col-md-7">
-			<h2 class="featurette-heading">And lastly, this one.
-				<span class="text-muted">Checkmate.</span>
-			</h2>
-			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		</div>
-		<div class="col-md-5">
-			<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
-				<title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-			</svg>
-		</div>
-	</div>
-
-	<hr
-	class="featurette-divider">
-<!-- /END THE FEATURETTES -->
+    {# {{ var_home.block1_img }}
+    {{ var_home.block3_img }}
+    {{ var_home.block3_title_seo }}
+    {{ var_home.block3_title }}
+    {{ var_home.block3_text }}
+    {{ var_home.block5_title_seo }}
+    {{ var_home.block5_title }}
+    {{ var_home.block5_btn }}
+    {{ var_home.block5_btn_link }}
+    {{ var_home.block2_title_seo }}
+    {{ var_home.block2_title }}
+    {{ var_home.block2_text }} #}
 
 {% endblock %}

@@ -11,6 +11,8 @@ use App\Entity\Carrier;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Controller\Admin\OrderCrudController;
+use App\Entity\About;
+use App\Entity\Home;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -76,5 +78,9 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Liens personnalisés', 'fa fa-link', Menu::class)->setQueryParameter('submenuIndex', 2),
             MenuItem::linkToCrud('Catégories', 'fa fa-tag', Menu::class)->setQueryParameter('submenuIndex', 3),
         ]);
+
+        yield MenuItem::linkToCrud('Home', 'fa fa-home', Home::class);
+        
+        yield MenuItem::linkToCrud('About', 'fa fa-ask', About::class);
     }
 }
