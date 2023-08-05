@@ -9,6 +9,10 @@ h1, .h1 {
     line-height: 99px;
     text-transform: uppercase;
     color: $white-color;
+    @media (max-width: 768px) {
+        font-size: 50px;
+        line-height: 45px;
+    }
 }
 h2, .h2 {
     font-family: $font;
@@ -17,6 +21,10 @@ h2, .h2 {
     line-height: 65px;
     text-transform: uppercase;
     color: $white-color;
+    @media (max-width: 768px) {
+        font-size: 40px;
+        line-height: 45px;
+    }
 }
 h3, .h3 {
     font-family: $font;
@@ -25,6 +33,10 @@ h3, .h3 {
     line-height: 49px;
     text-transform: uppercase;
     color: $white-color;
+    @media (max-width: 768px) {
+        font-size: 40px;
+        line-height: 49px;
+    }
 }
 h4, .h4 {
     font-family: $font;
@@ -33,15 +45,18 @@ h4, .h4 {
     line-height: 40px;
     text-transform: uppercase;
     color: $white-color;
+    @media (max-width: 768px) {
+        font-size: 24px;
+        line-height: 40px;
+    }
 }
 .seo {
-    font-size: 13px;
     font-family: $second-font;
+    font-size: 13px;
     font-weight: 400;
     line-height: 17px;
-    letter-spacing: 1.8px;
+    letter-spacing: 2.6px;
     text-transform: uppercase;
-    color: $white-color;
 }
 .title {
     font-family: $font;
@@ -84,6 +99,18 @@ p.p-space {
     font-weight: 400;
     color: $white-color;
 }
+.btn-main {
+    background-color: $main-color;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: $white-color;
+    text-decoration: none;
+    &:hover {
+        background-color: $hover-color;
+        color: $white-color;
+        text-decoration: none;
+    }
+}
 
 // .a-link {
 //     color: $main-color;
@@ -115,20 +142,12 @@ p.p-space {
     line-height: 27px;
     letter-spacing: 1.7px;
     text-transform: uppercase;
-    text-shadow: $neon;
-    transform: translateX(10px);
-    position: relative;
-    display: inline-block;
+    padding: 1rem 0;
 }
 
 .a-link::after {
     content: url("../../assets/img/fleche-btn.svg");
-    display: inline-block;
-    transition: transform 0.3s ease-in-out;
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(-50%, -50%);
+    margin-left: .5rem;
 }
 
 .a-link:hover {
@@ -136,7 +155,45 @@ p.p-space {
     color: $main-color;
 }
 
-.a-link:hover::after {
-    content: url("../../assets/img/fleche-btn-hover.svg");
-    transform: translate(50%, 50%) scale(1.5, 1);
+// .a-link:hover::after {
+//     content: url("../../assets/img/fleche-btn-hover.svg");
+// }
+
+.main {
+    color: $main-color;
+}
+
+.link-finder {
+    cursor: pointer;
+}
+
+.amber {
+    background-color: $amber !important;
+    &-color {
+        color: $amber !important;
+    }
+}
+.stuut {
+    background-color: $stuut !important;
+    &-color {
+        color: $stuut !important;
+    }
+}
+.leak {
+    background-color: $leak !important;
+    &-color {
+        color: $leak !important;
+    }
+}
+.white {
+    background-color: $white !important;
+    &-color {
+        color: $white !important;
+    }
+}
+.blonde {
+    background-color: $blonde !important;
+    &-color {
+        color: $blonde !important;
+    }
 }

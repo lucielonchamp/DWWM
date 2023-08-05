@@ -3,9 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 
 class CategoryCrudController extends AbstractCrudController
 {
@@ -16,7 +19,16 @@ class CategoryCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('name');
-        yield SlugField::new('slug')->setTargetFieldName('name');
+        yield TextField::new('title')->setColumns('col-sm-6');
+        yield SlugField::new('slug')->setTargetFieldName('title')->setColumns('col-sm-6');
+        yield TextEditorField::new('description')->setColumns('col-sm-6');
+        yield TextEditorField::new('descriptionRecipe')->setColumns('col-sm-6');
+        yield ImageField::new('img')
+            ->setBasePath('uploads/')
+            ->setUploadDir('public/uploads/')
+            ->setUploadedFileNamePattern('[randomhash].[extension]')
+            ->setRequired(false);
+        yield TextField::new('titleRecipe')->setColumns('col-sm-6');
+        yield ColorField::new('color')->setColumns('col-sm-6');
     }
 }

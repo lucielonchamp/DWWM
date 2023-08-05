@@ -1,6 +1,8 @@
 .home-banner {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/stock-photo-we-meet-oktoberfest-hand-of-bartender-pouring-a-large-lager-beer-in-tap-pouring-beer-for-client-1031564416.jpg');
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,6 +10,16 @@
     
     .logo-brasserie {
         width: 300px;
+    }
+
+    .h2 {
+        font-weight: 400;
+        letter-spacing: 5px;
+        @media (max-width: 768px) {
+            font-size: 20px;
+            letter-spacing: 2.5px;
+            margin: 0;
+        }
     }
 
     h1 {
@@ -18,6 +30,9 @@
 
 .home-block1 {
     padding: 10rem 0;
+    @media (max-width: 768px) {
+        padding: 5rem 0;
+    }
     .row {
         justify-content: space-around;
     }
@@ -26,8 +41,20 @@
         align-items: center;
         position: relative;
 
+        @media (max-width: 768px) {
+            justify-content: center;
+        }
+
         img {
             width: 85%;
+            @media (max-width: 768px) {
+                width: 100%;
+            }
+        }
+
+        .img {
+            max-height: 650px;
+            object-fit: contain;
         }
 
         .img-absolute {
@@ -38,6 +65,9 @@
                 z-index: 2;
                 width: 240px;
                 transform: rotate(338deg);
+                @media (max-width: 768px) {
+                    display: none;
+                }
             }
             &_bottom {
                 position: absolute;
@@ -46,6 +76,138 @@
                 z-index: -1;
                 transform: rotate(7deg);
                 width: 240px;
+                @media (max-width: 768px) {
+                    display: none;
+                }
+            }
+        }
+    }
+    &_text {
+        @media (max-width: 768px) {
+            padding-top: 2rem;
+        }
+    }
+}
+
+.home-block2 {
+    padding: 2rem 0 6rem 0;
+    @media (max-width: 768px) {
+        padding: 0;
+    }
+
+    .row {
+        justify-content: center;
+        align-items: center;
+    }
+    &_title .h2 {
+        color: $main-color;
+    }
+}
+
+.home-block3 {
+    padding: 3rem 0;
+    @media (max-width: 768px) {
+        padding: 5rem 0;
+    }
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .row {
+        justify-content: center;
+        align-items: center;
+        
+    }
+    &_img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        background-repeat: no-repeat !important;
+        margin: 1.5rem 0;
+    }
+    &_text {
+        width: 80%;
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
+}
+.home-block4_slider {
+    padding: 3rem 0;
+    @media (max-width: 768px) {
+        padding: 0;
+    }
+    .h2, .seo {
+        text-align: center;
+    }
+    #slider-home {
+        padding-top: 2rem;
+    }
+    .slick-prev {
+        top: 40%;
+        left: 100px;
+        z-index: 1;
+        position: absolute;
+    }
+    .slick-next {
+        top: 40%;
+        right: 100px;
+        z-index: 1;
+        position: absolute;
+    }
+    .slick-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0 0 1rem 0;
+        list-style-type: none;
+
+        li {
+            margin: 0 0.25rem;
+        }
+    
+        button {
+            display: block;
+            width: .4rem;
+            height: .4rem;
+            padding: 0;
+            
+            border: none;
+            border-radius: 100%;
+            background-color: $grey-color;
+            text-indent: -9999px;
+        }
+    
+        li.slick-active button {
+            width: .5rem;
+            height: .5rem;
+            background-color: $white-color;
+        }
+    }
+}
+.home-block5 {
+    padding: 5rem 0;
+    .row {
+        justify-content: space-evenly;
+    }
+    &_img {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        @media (max-width: 768px) {
+            justify-content: center;
+            padding-top: 1rem;
+        }
+
+        img {
+            width: 85%;
+            height: 100%;
+            object-fit: cover;
+            @media (max-width: 768px) {
+                width: 100%;
             }
         }
     }

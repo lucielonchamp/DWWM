@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,51 +16,32 @@ class Category
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $title = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class, orphanRemoval: true)]
     private Collection $products;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Subcategory::class)]
-    private Collection $subcategories;
-
-    #[ORM\Column(length: 80, nullable: true)]
-    private ?string $title_seo = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description_seo = null;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $descriptionRecipe = null;
 
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-        $this->subcategories = new ArrayCollection();
-    }
+    #[ORM\Column(length: 255)]
+    private ?string $titleRecipe = null;
 
-    public function __toString(){
-        return $this->getName();
-    }
+    #[ORM\Column(length: 255)]
+    private ?string $img = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $color = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -106,44 +86,19 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Collection<int, Subcategory>
-     */
-    public function getSubcategories(): Collection
+    public function __toString()
     {
-        return $this->subcategories;
+        return $this->title;
+    }
+    
+    public function getTitle(): ?string
+    {
+        return $this->title;
     }
 
-    public function addSubcategory(Subcategory $subcategory): static
+    public function setTitle(string $title): self
     {
-        if (!$this->subcategories->contains($subcategory)) {
-            $this->subcategories->add($subcategory);
-            $subcategory->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSubcategory(Subcategory $subcategory): static
-    {
-        if ($this->subcategories->removeElement($subcategory)) {
-            // set the owning side to null (unless already changed)
-            if ($subcategory->getCategory() === $this) {
-                $subcategory->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getTitleSeo(): ?string
-    {
-        return $this->title_seo;
-    }
-
-    public function setTitleSeo(?string $title_seo): static
-    {
-        $this->title_seo = $title_seo;
+        $this->title = $title;
 
         return $this;
     }
@@ -153,21 +108,57 @@ class Category
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getDescriptionSeo(): ?string
+    public function getDescriptionRecipe(): ?string
     {
-        return $this->description_seo;
+        return $this->descriptionRecipe;
     }
 
-    public function setDescriptionSeo(?string $description_seo): static
+    public function setDescriptionRecipe(string $descriptionRecipe): self
     {
-        $this->description_seo = $description_seo;
+        $this->descriptionRecipe = $descriptionRecipe;
+
+        return $this;
+    }
+
+    public function getTitleRecipe(): ?string
+    {
+        return $this->titleRecipe;
+    }
+
+    public function setTitleRecipe(string $titleRecipe): self
+    {
+        $this->titleRecipe = $titleRecipe;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

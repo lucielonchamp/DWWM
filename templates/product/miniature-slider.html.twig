@@ -1,0 +1,9 @@
+<div class="product-miniature link-finder">
+    <div class="product-miniature_content">
+        <img class="product-miniature_img" src="/uploads/{{ product.imgMiniature }}" alt="{{product.name}}">
+        <div class="product-miniature_content-text">
+            <p class="product-miniature_content-text-title">{{product.name}}</p>
+            <a class="product-miniature_content-text-link" href="{{ path('product', { 'slug' : product.slug }) }}">En savoir plus</a>
+        </div>
+    </div>
+</div>

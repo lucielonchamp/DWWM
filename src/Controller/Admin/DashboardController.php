@@ -72,13 +72,6 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::linkToCrud('Header', 'fa fa-image', Header::class);
 
-        yield MenuItem::subMenu('Menus', 'fa fa-list')->setSubItems([
-            MenuItem::linkToCrud('Pages', 'fa fa-file', Menu::class)->setQueryParameter('submenuIndex', 0),
-            MenuItem::linkToCrud('Articles', 'fa fa-newspaper', Menu::class)->setQueryParameter('submenuIndex', 1),
-            MenuItem::linkToCrud('Liens personnalisés', 'fa fa-link', Menu::class)->setQueryParameter('submenuIndex', 2),
-            MenuItem::linkToCrud('Catégories', 'fa fa-tag', Menu::class)->setQueryParameter('submenuIndex', 3),
-        ]);
-
         yield MenuItem::linkToCrud('Home', 'fa fa-home', Home::class);
         
         yield MenuItem::linkToCrud('About', 'fa fa-ask', About::class);
