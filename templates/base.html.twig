@@ -1,4 +1,4 @@
-{% set menus = menu_service.findAll %}
+{#{% set menus = menu_service.findAll %}#}
 {% set categories = menu_categories() %}
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,29 +16,31 @@
 		<!-- Bootstrap core CSS -->
 		<link href="{{ asset('assets/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 		
 		<!-- Custom styles for this template -->
 		<link href="{{ asset('assets/css/theme.css') }}" rel="stylesheet">
 	</head>
 	<body>
 		<header>
-			{{ include('component/menu.html.twig') }}
-			<ul class="nav nav-pills align-items-center">
-				{% for menu in menus %}
-					{% if menu.subMenus.count > 0 %}
-								<span class="menu-label">{{ menu.name }}</span>
-								{% for subMenu in menu.subMenus %}
-									<a class="dropdown-item" href="{{ subMenu|menuLink }}">{{ subMenu.name }}</a>
-								{% endfor %}
-					{% else %}
-						<li class="nav-item">
-							<a href="{{ menu|menuLink }}" class="nav-link">
-								<span class="menu-label">{{ menu.name }}</span>
-							</a>
-						</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
+{#			{{ include('components/menu.html.twig') }}#}
+{#			<ul class="nav nav-pills align-items-center">#}
+{#				{% for menu in menus %}#}
+{#					{% if menu.subMenus.count > 0 %}#}
+{#								<span class="menu-label">{{ menu.name }}</span>#}
+{#								{% for subMenu in menu.subMenus %}#}
+{#									<a class="dropdown-item" href="{{ subMenu|menuLink }}">{{ subMenu.name }}</a>#}
+{#								{% endfor %}#}
+{#					{% else %}#}
+{#						<li class="nav-item">#}
+{#							<a href="{{ menu|menuLink }}" class="nav-link">#}
+{#								<span class="menu-label">{{ menu.name }}</span>#}
+{#							</a>#}
+{#						</li>#}
+{#					{% endif %}#}
+{#				{% endfor %}#}
+{#			</ul>#}
 
 			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 				<a class="navbar-brand" href="{{ path('home') }}">Ma boutique</a>
@@ -101,7 +103,7 @@
 		</header>
 
 		<main role="main">
-			{% if block('carousel') is defined %}
+			{# {% if block('carousel') is defined %}
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<ol class="carousel-indicators">
 					{% for key,header in headers %}
@@ -134,16 +136,17 @@
 						<span class="sr-only">Next</span>
 					</a>
 				</div>
-			{% endif %}
+			{% endif %} #}
 
 
 			<!-- Marketing messaging and featurettes
 						    ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
-			<div class="
+			{# <div class=" #}
 			{# container #}
-			marketing {% if block('carousel') is not defined %}mt-5{% endif %}"> {% block content %}{% endblock %}
+			{# marketing {% if block('carousel') is not defined %}mt-5{% endif %}"> #}
+			{% block content %}{% endblock %} 
 
 
 				</div>
@@ -160,10 +163,13 @@
 						<a href="#">Terms</a>
 					</p>
 				</footer>
+				
 			</main>
 			{% block javascript %}
 			{% endblock %}
 			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+			<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 			<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+			<script src="{{ asset('assets/js/custom.js') }}"></script>
 		</body>
 	</html>

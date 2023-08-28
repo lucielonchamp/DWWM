@@ -3,55 +3,87 @@
 
 {% block content %}
 
-{% include 'article/list.html.twig' with { articles } %}
-
-	<!-- Three columns of text below the carousel -->
-	<h3>Nos meilleurs ventes</h3>
-	<div class="row">
-		{% for product in products %}
-			<div class="col-md-3">
-				{% include 'product/miniature.html.twig' %}
-			</div>
-		{% endfor %}
-	</div>
-	<!-- /.row -->
+{# {% include 'article/list.html.twig' with { articles } %} #}
 
 	<div class="home-banner">
-		<img class="logo-brasserie" src="../assets/img/logo-chtimiste.png" alt="logo de la brasserie">
+		<img class="logo-brasserie" src="{{ asset('assets/img/logo-chtimiste.png') }}" alt="logo de la brasserie">
 		<span class="h2">Brasserie</span>
 		<h1>La Ch'timiste</h1>
 	</div>
 
-	<div class="home-block1">
-		<div class="row">
-			{# {{ dump(var_home) }} #}
-			{% for home in var_home %}
-				<div class="col-md-5 home-block1_img">
-					<img src="/uploads/{{ home.block1Img }}">
-					<img class="img-absolute_top" src="../assets/img/stock-vector-brewery-vintage-poster-beer-glass-with-foam-and-bubbles-vector-illustration-layered-separate-1065660812.jpg">
-					<img class="img-absolute_bottom" src="../assets/img/stock-vector-vintage-style-mug-of-beer-264498053.jpg">
-				</div>
-				<div class="col-md-5 home-block1_text">
-					<h2 class="home-block1_text-seo seo ">{{ home.block1TitleSeo }}</h2>
-					<p class="home-block1_text-title h2">{{ home.block1Title }}</p>
-					<p class="home-block1_text-text">{{ home.block1Text | raw }}</p>
-					<a href="{{ home.block1BtnLink }}" type="button" class="home-block1_text-text a-link">{{ home.block1Btn }}</a>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+	{% for home in var_home %}
 
-    {# {{ var_home.block1_img }}
-    {{ var_home.block3_img }}
-    {{ var_home.block3_title_seo }}
-    {{ var_home.block3_title }}
-    {{ var_home.block3_text }}
-    {{ var_home.block5_title_seo }}
-    {{ var_home.block5_title }}
-    {{ var_home.block5_btn }}
-    {{ var_home.block5_btn_link }}
-    {{ var_home.block2_title_seo }}
-    {{ var_home.block2_title }}
-    {{ var_home.block2_text }} #}
+		<div class="home-block1">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-5 home-block1_img">
+						<img class="img" src="/uploads/{{ home.block1Img }}">
+						<img class="img-absolute_top" src="{{ asset('assets/img/stock-vector-brewery-vintage-poster-beer-glass-with-foam-and-bubbles-vector-illustration-layered-separate-1065660812.jpg') }}">
+						<img class="img-absolute_bottom" src="{{ asset('assets/img/stock-vector-vintage-style-mug-of-beer-264498053.jpg') }}">
+					</div>
+					<div class="col-md-5 home-block1_text">
+						<h2 class="home-block1_text-seo seo">{{ home.block1TitleSeo }}</h2>
+						<p class="home-block1_text-title h2">{{ home.block1Title }}</p>
+						<div class="home-block1_text-text">{{ home.block1Text | raw }}</div>
+						<a href="{{ home.block1BtnLink }}" type="button" class="home-block1_text-text a-link">{{ home.block1Btn }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="home-block2">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-5 home-block2_title">
+						<h2 class="seo">{{ home.block2TitleSeo }}</h2>
+						<p class="h2">{{ home.block2Title }}</p>
+					</div>
+					<div class="col-md-5 home-block2_text">
+						<div>{{ home.block2Text | raw }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="home-block3">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 center">
+						<h2 class="seo home-block3_seo">{{ home.block3TitleSeo }}</h2>
+						<p class="h2 home-block3_title">{{ home.block3Title | raw }}</p>
+						<img class="home-block3_img" src="/uploads/{{ home.block3Img }}">
+						<div class="home-block3_text">{{ home.block3Text | raw }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="home-block4_slider">
+			<h2 class="seo">depuis 2020</h2>
+			<p class="h2">Nos différentes <span class="main">bières</span></p>
+			<div id="slider-home">
+				{% for product in products %}
+						{% include 'product/miniature-slider.html.twig' %}
+				{% endfor %}
+			</div>
+		</div>
+		
+		<div class="home-block5">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-5 home-block5_text">
+						<h2 class="home-block5_text-seo seo">{{ home.block5TitleSeo }}</h2>
+						<p class="home-block5_text-title h2">{{ home.block5Title | raw}}</p>
+						<div class="home-block5_text-text">{{ home.block5Text | raw }}</div>
+						<a href="{{ home.block5BtnLink }}" type="button" class="home-block5_text-text a-link">{{ home.block5Btn }}</a>
+					</div>
+					<div class="col-md-5 home-block5_img">
+						<img src="/uploads/{{ home.block5Img }}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endfor %}
 
 {% endblock %}

@@ -1,0 +1,119 @@
+.product-block1 {
+  padding-bottom: 8rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  flex-wrap: wrap;
+  text-align: center;
+  text-wrap: balance;
+  z-index: 1;
+
+  &_background {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    
+    &-left {
+      text-align: start;
+      .category {
+        font-size: 45px;
+        font-weight: 800;
+        line-height: 51px;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+
+      .alcohol {
+        color: $white-color;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 17px;
+        letter-spacing: 2.6px;
+        text-transform: uppercase;
+      }
+
+      .btn-cart {
+        margin: 2rem 0 0 0;
+        .text-price {
+          margin-top: .5rem;
+          &_unity {
+            color: $white-color;
+            font-size: 12px;
+            font-weight: 300;
+            line-height: 14px;
+            letter-spacing: 1.3px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.product-block2 {
+  padding-bottom: 15rem;
+  h2.seo {
+    margin-bottom: .25rem;
+  }
+  .arome {
+    padding-right: 4rem;
+    .card-aroma {
+      &_content {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        .background-icon {
+          border-radius: 25px;
+          padding: .5rem;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+  .image {
+    display: flex;
+    justify-content: center;
+  }
+  .ingredients {
+    padding-left: 3rem;
+    &-content {
+      margin-bottom: 3.5em;
+      font-weight: 600;
+      width: 65%;
+    }
+  }
+}
+
+.product-block4 {
+  img {
+    width: 373px;
+    height: 466px;
+    object-fit: cover;
+  }
+  &_content {
+    justify-content: space-between;
+
+    .img-left {
+      margin-top: -6rem;
+      align-items: baseline;
+      padding: 0;
+    }
+    .content {
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 2rem;
+      
+      &-text~*, .h2 {
+        text-align: center;
+      }
+    }
+    .img-right {
+      padding: 0;
+      margin-bottom: -6rem;
+    }
+  }
+}

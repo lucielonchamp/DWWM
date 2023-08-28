@@ -65,6 +65,15 @@ class Home
     #[ORM\Column(length: 255)]
     private ?string $block1Img = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $test = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $block5Text = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $block5Img = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -270,6 +279,42 @@ class Home
     public function setBlock1Img(string $block1Img): static
     {
         $this->block1Img = $block1Img;
+
+        return $this;
+    }
+
+    public function getTest(): ?string
+    {
+        return $this->test;
+    }
+
+    public function setTest(string $test): self
+    {
+        $this->test = $test;
+
+        return $this;
+    }
+
+    public function getblock5Text(): ?string
+    {
+        return $this->block5Text;
+    }
+
+    public function setblock5Text(string $block5Text): self
+    {
+        $this->block5Text = $block5Text;
+
+        return $this;
+    }
+
+    public function getBlock5Img(): ?string
+    {
+        return $this->block5Img;
+    }
+
+    public function setBlock5Img(string $block5Img): self
+    {
+        $this->block5Img = $block5Img;
 
         return $this;
     }

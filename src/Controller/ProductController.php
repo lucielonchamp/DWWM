@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Classe\Search;
 use App\Entity\Product;
+use App\Entity\Category;
 use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController
 {
@@ -43,17 +44,36 @@ class ProductController extends AbstractController
     public function show($slug): Response
     {
         $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
-        $productCategoryId = $product->getCategory()->getId();
-        $products = $this->entityManager->getRepository(Product::class)->findByCategory($productCategoryId);
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        // $productCategoryId = $product->getCategory()->getId();
+        // $products = $this->entityManager->getRepository(Product::class)->findByCategory($productCategoryId);
+
+        // Récupérez l'ID de la catégorie du produit spécifique
+        $specificProductCategoryId = $product->getCategory()->getId();
+
+        // Récupérez tous les produits qui n'appartiennent pas à la catégorie du produit spécifique
+        $othersProducts = $this->entityManager->createQueryBuilder()
+            ->select('p')
+            ->from(Product::class, 'p')
+            ->join('p.category', 'c')
+            ->where('c.id != :specificProductCategoryId')
+            ->setParameter('specificProductCategoryId', $specificProductCategoryId)
+            ->getQuery()
+            ->getResult();
+
+        $categories = $this->entityManager->getRepository(Category::class)->findAll();
+
 
         if(!$product){
             return $this->redirectToRoute('products');
         }
 
         return $this->render('product/show.html.twig', [
-            'products' => $products,
+            // 'products' => $products,
             'product' => $product,
+            'products' => $products,
+            'categories' => $categories,
+            'othersProducts' => $othersProducts,
         ]);
     }
-    // ajouter les products de la même catégorie
 }
