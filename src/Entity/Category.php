@@ -39,6 +39,18 @@ class Category
     #[ORM\Column(length: 50)]
     private ?string $color = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $titleSeoCategory = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $titleCategory = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $contentCategory = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imgCategory = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,6 +171,54 @@ class Category
     public function setColor(string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function getTitleSeoCategory(): ?string
+    {
+        return $this->titleSeoCategory;
+    }
+
+    public function setTitleSeoCategory(string $titleSeoCategory): self
+    {
+        $this->titleSeoCategory = $titleSeoCategory;
+
+        return $this;
+    }
+
+    public function getTitleCategory(): ?string
+    {
+        return $this->titleCategory;
+    }
+
+    public function setTitleCategory(string $titleCategory): self
+    {
+        $this->titleCategory = $titleCategory;
+
+        return $this;
+    }
+
+    public function getContentCategory(): ?string
+    {
+        return $this->contentCategory;
+    }
+
+    public function setContentCategory(string $contentCategory): self
+    {
+        $this->contentCategory = $contentCategory;
+
+        return $this;
+    }
+
+    public function getImgCategory(): ?string
+    {
+        return $this->imgCategory;
+    }
+
+    public function setImgCategory(string $imgCategory): self
+    {
+        $this->imgCategory = $imgCategory;
 
         return $this;
     }

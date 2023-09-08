@@ -75,6 +75,9 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $imgMiniature = null;
 
+    #[ORM\Column]
+    private ?int $stock = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -316,6 +319,18 @@ class Product
     public function setImgMiniature(string $imgMiniature): self
     {
         $this->imgMiniature = $imgMiniature;
+
+        return $this;
+    }
+
+    public function getStock(): ?int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(int $stock): self
+    {
+        $this->stock = $stock;
 
         return $this;
     }

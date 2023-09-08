@@ -40,12 +40,18 @@ class AddressType extends AbstractType
             ])
             ->add('country', CountryType::class, [
                 'label' => "Pays",
+                'attr' => [
+                    'class' => 'country'
+                ]
             ])
             ->add('phone', TelType::class, [
                 'label' => "Téléphone",
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider mon adresse',
+                'attr' => [
+                    'class' => 'btn btn-main'
+                ]
             ])
         ;
     }

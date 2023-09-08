@@ -28,7 +28,15 @@ class CategoryCrudController extends AbstractCrudController
             ->setUploadDir('public/uploads/')
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false);
+        yield ImageField::new('imgCategory')
+            ->setBasePath('uploads/')
+            ->setUploadDir('public/uploads/')
+            ->setUploadedFileNamePattern('[randomhash].[extension]')
+            ->setRequired(false);
         yield TextField::new('titleRecipe')->setColumns('col-sm-6');
         yield ColorField::new('color')->setColumns('col-sm-6');
+        yield TextField::new('titleSeoCategory')->setColumns('col-sm-6');
+        yield TextField::new('titleCategory')->setColumns('col-sm-6');
+        yield TextEditorField::new('contentCategory')->setColumns('col-sm-6');
     }
 }

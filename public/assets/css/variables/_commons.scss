@@ -1,5 +1,5 @@
 body {
-    background: $dark-color;
+    background: $dark-color !important;
 }
 
 h1, .h1 {
@@ -34,8 +34,8 @@ h3, .h3 {
     text-transform: uppercase;
     color: $white-color;
     @media (max-width: 768px) {
-        font-size: 40px;
-        line-height: 49px;
+        font-size: 20px;
+        line-height: 25px;
     }
 }
 h4, .h4 {
@@ -70,7 +70,7 @@ h4, .h4 {
 div {
     color: $white-color;
 }
-p, .p {
+p, .p, label, th, td {
     font-family: $font;
     font-size: 16px;
     font-weight: 400;
@@ -111,6 +111,14 @@ p.p-space {
         text-decoration: none;
     }
 }
+.btn-second {
+    background-color: $white-color;
+    color: $main-color;
+    &:hover {
+        background-color: $hover-color;
+        color: $white-color;
+    }
+}
 
 // .a-link {
 //     color: $main-color;
@@ -143,6 +151,7 @@ p.p-space {
     letter-spacing: 1.7px;
     text-transform: uppercase;
     padding: 1rem 0;
+    text-decoration: none;
 }
 
 .a-link::after {
@@ -150,9 +159,20 @@ p.p-space {
     margin-left: .5rem;
 }
 
+.a-link:hover::after {
+    content: url("../../assets/img/fleche-btn-hover.svg");
+}
+
 .a-link:hover {
     text-decoration: none;
+    color: $white-color;
+}
+
+a {
     color: $main-color;
+    &:hover {
+        color: $main-color;
+    }
 }
 
 // .a-link:hover::after {
@@ -167,33 +187,6 @@ p.p-space {
     cursor: pointer;
 }
 
-.amber {
-    background-color: $amber !important;
-    &-color {
-        color: $amber !important;
-    }
-}
-.stuut {
-    background-color: $stuut !important;
-    &-color {
-        color: $stuut !important;
-    }
-}
-.leak {
-    background-color: $leak !important;
-    &-color {
-        color: $leak !important;
-    }
-}
-.white {
-    background-color: $white !important;
-    &-color {
-        color: $white !important;
-    }
-}
-.blonde {
-    background-color: $blonde !important;
-    &-color {
-        color: $blonde !important;
-    }
+#header {
+    margin-bottom: 3rem;
 }

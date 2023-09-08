@@ -4,34 +4,40 @@
     <script src="https://js.stripe.com/v3/"></script>
 {% endblock %}
 
-{% block title %}Paiement de ma commande - {% endblock %}
+{% block title %}Paiement de ma commande - {{ contact_company }}{% endblock %}
 
 {% block content %}
-<h2>Mon récapitulatif</h2>
-
-<div class="row">
-    <div class="col-md-6">
-        <h3>Mon adresse de livraison</h3>
-        <p>{{ delivery|raw }}</p>
-        <h3>Mon transporteur</h3>
-        <p>{{ carrier.name }} - {{ carrier.description }}</p>
-        <p>{{ (carrier.price / 100)|number_format(2, ',', '.') }} €</p>
-    </div>
-    <div class="col-md-6">
-    {% set total = null %}
-    {% for key,product in cart %}
-        <div class="row">
-            <div class="col-2"><img src="/uploads/{{ product.product.illustration }}" height="75px" alt="{{product.product.name}}"></div>
-            <div class="col-6">{{product.product.name}}</div>
-            <div class="col-2">x {{ product.quantity }}</div>
-            <div class="col-2">{{((product.product.price * product.quantity) / 100)|number_format(2, ',', '.')}} €</div>
+<div class="container order-recap">
+<p class="h2">Mon récapitulatif</p>
+    <div class="row justify-content-between">
+        <div class="col-md-6">
+            <p class="h3">Mon adresse de livraison</p>
+            <p>{{ delivery|raw }}</p>
+            <p class="h3 carrier-check">Mon transporteur</p>
+            <p>{{ carrier.name }} - {{ carrier.description }}</p>
+            <p>{{ (carrier.price / 100)|number_format(2, ',', '.') }} €</p>
         </div>
-    {% set total = total + (product.product.price * product.quantity) %}
-    {% endfor %}
-        <p>Sous-total : {{(total / 100)|number_format(2, ',', '.')}} €</p>
-        <p>Livraison : {{(carrier.price / 100)|number_format(2, ',', '.')}} €</p>
-        <p>Total : {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',', '.') }} €</p>    
+        <div class="col-md-6 recap-right">
+        {% set total = null %}
+        {% for key,product in cart %}
+            <div class="row">
+                <p class="h3">Mes produits</p>
+                <div class="col-2"><img src="/uploads/{{ product.product.illustration }}" height="75px" alt="{{product.product.name}}"></div>
+                <div class="col-6">{{product.product.name}}</div>
+                <div class="col-2">x {{ product.quantity }}</div>
+                <div class="col-2">{{((product.product.price * product.quantity) / 100)|number_format(2, ',', '.')}} €</div>
+            </div>
+        {% set total = total + (product.product.price * product.quantity) %}
+        {% endfor %}
+            <div class="price-recap">
+                <p>Sous-total : {{(total / 100)|number_format(2, ',', '.')}} €</p>
+                <p>Livraison : {{(carrier.price / 100)|number_format(2, ',', '.')}} €</p>
+                <p>Total : {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',', '.') }} €</p>  
+            </div>
+            <div class="btn-check">
+                <a href="{{ path('stripe_create_session', {'reference': reference}) }}" class="btn btn-main" id="checkout-button">Payer | {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',', '.') }} €</a>
+            </div>
+        </div>
     </div>
-    <a href="{{ path('stripe_create_session', {'reference': reference}) }}" class="btn btn-success" id="checkout-button">Payer | {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',', '.') }} €</a>
 </div>
 {% endblock %}

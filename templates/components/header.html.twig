@@ -1,0 +1,111 @@
+<header id="header">
+	<nav class="navbar container">
+		<section class="navbar-left">
+			<a href="{{ path('home') }}" class="brand"><img src="{{ asset('assets/img/logo-chtimiste.png') }}"></a>
+			<div class="burger" id="burger">
+				<span class="burger-line"></span>
+				<span class="burger-line"></span>
+				<span class="burger-line"></span>
+			</div>
+		</section>
+		<section class="navbar-center">
+			<span class="overlay"></span>
+			<div class="menu" id="menu">
+				<div class="menu-header">
+					<span class="menu-arrow">
+						<i class="fa-solid fa-arrow-left text-white"></i>
+					</span>
+					<span class="menu-title"></span>
+				</div>
+				<ul class="menu-inner">
+					<li class="menu-item">
+						<a href="{{ path('home') }}" class="menu-link">Accueil</a>
+					</li>
+					<li class="menu-item menu-dropdown">
+						<span class="menu-link">
+							Nos produits
+							<i class="fa-solid fa-caret-down"></i>
+						</span>
+						<div id="menu-products" class="submenu megamenu 	megamenu-column-4">
+							{% for category in categories %}
+								<div class="submenu-inner num-{{ loop.index }}">
+									<h4 class="submenu-title">{{ category.title }}</h4>
+									<ul class="submenu-list">
+										{% for product in products %}
+											{% if (product.category == category.title) %}
+												<li class="submenu-item">
+													<a href="{{ path('product', { 'slug' : product.slug }) }}" class="submenu-link">{{ product.name }}</a>
+												</li>
+											{% endif %}
+										{% endfor %}
+									</ul>
+								</div>
+							{% endfor %}
+							<div class="submenu-inner link-finder">
+								<h4 class="submenu-title">
+									Tous nos produits<i class="fa-solid fa-arrow-right text-main mx-2"></i>
+								</h4>
+								<a href="{{ path('products') }}"></a>
+							</div>
+							<div id="menu-products-img" class="submenu-inner">
+								<img src="{{ asset('assets/img/beer-blond.png')}}">
+							</div>
+						</div>
+					</li>
+					<li class="menu-item menu-dropdown">
+						<span class="menu-link">Top vente<i class="fa-solid fa-caret-down"></i>
+						</span>
+						<div class="submenu megamenu megamenu-column-4">
+							{% for product in productsIsBest %}
+								<div class="submenu-inner link-finder">
+									<img class="submenu-inner_img" src="/uploads/{{ product.illustration }}" class="submenu-image" alt="Product">
+									<a href="{{ path('product', { 'slug' : product.slug }) }}" class="submenu-link">
+										<span class="submenu-title">{{ product.name }}</span>
+									</a>
+								</div>
+							{% endfor %}
+						</div>
+					</li>
+					<li class="menu-item">
+						<a href="{{ path('contact')}}" class="menu-link">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="navbar-right">
+			<li class="menu-item menu-dropdown">
+				<span class="menu-link">
+					<i class="fa-solid fa-user text-white"></i>
+				</span>
+				<div class="submenu megamenu megamenu-column-1">
+					<ul class="submenu-list">
+						{% if app.user %}
+                            <li class="submenu-item">
+								<a href="{{ path('account') }}" class="submenu-link">Mon compte</a>
+							</li>
+							<li class="submenu-item">
+								<a href="{{ path('cart') }}" class="submenu-link">Mon panier</a>
+							</li>
+							<li class="submenu-item">
+								<a href="{{ path('order') }}" class="submenu-link">Mes commandes</a>
+							</li>
+							<li class="submenu-item">
+								<a href="{{ path('app_logout') }}" class="submenu-link">Déconnexion</a>
+							</li>
+						{% else %}
+							<li class="submenu-item">
+								<a href="{{ path('app_login') }}" class="submenu-link">Connexion</a>
+							</li>
+							<li class="submenu-item">
+								<a href="{{ path('register') }}" class="submenu-link">Inscription</a>
+							</li>
+							<li class="submenu-item">
+								<a href="{{ path('contact') }}" class="submenu-link">Aide</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</li>
+		</section>
+	</nav>
+</header>

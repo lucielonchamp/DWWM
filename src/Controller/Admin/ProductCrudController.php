@@ -43,22 +43,23 @@ class ProductCrudController extends AbstractCrudController
             ->setUploadDir('public/uploads/')
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false),
-            TextEditorField::new('description')->setLabel('Description de la dégustation'),
+            TextEditorField::new('description')->setLabel('Description de la dégustation')->hideOnIndex(),
             BooleanField::new('isBest', 'Produits phares'),
             MoneyField::new('price')
             ->setCurrency('EUR'),
+            IntegerField::new('stock'),
             AssociationField::new('category'),
-            TextField::new('titleSeo')->setColumns('col-sm-6'),
-            TextEditorField::new('descriptionSeo')->setColumns('col-sm-6'),
-            TextField::new('alcohol')->setColumns('col-sm-6'),
-            TextEditorField::new('aroma')->setColumns('col-sm-6'),
-            TextEditorField::new('aroma1')->setColumns('col-sm-6'),
-            TextEditorField::new('aroma2')->setColumns('col-sm-6'),
-            TextEditorField::new('aroma3')->setColumns('col-sm-6'),
-            TextField::new('ingredient')->setColumns('col-sm-6'),
-            IntegerField::new('bitterness')->setColumns('col-sm-6'),
-            IntegerField::new('roundness')->setColumns('col-sm-6'),
-            IntegerField::new('acidity')->setColumns('col-sm-6'),
+            TextField::new('titleSeo')->setColumns('col-sm-6')->hideOnIndex(),
+            TextEditorField::new('descriptionSeo')->setColumns('col-sm-6')->hideOnIndex(),
+            TextField::new('alcohol')->setColumns('col-sm-6')->hideOnIndex(),
+            TextEditorField::new('aroma')->setColumns('col-sm-6')->hideOnIndex()->hideOnIndex(),
+            TextEditorField::new('aroma1')->setColumns('col-sm-6')->hideOnIndex(),
+            TextEditorField::new('aroma2')->setColumns('col-sm-6')->hideOnIndex(),
+            TextEditorField::new('aroma3')->setColumns('col-sm-6')->hideOnIndex(),
+            TextField::new('ingredient')->setColumns('col-sm-6')->hideOnIndex(),
+            IntegerField::new('bitterness')->setColumns('col-sm-6')->hideOnIndex(),
+            IntegerField::new('roundness')->setColumns('col-sm-6')->hideOnIndex(),
+            IntegerField::new('acidity')->setColumns('col-sm-6')->hideOnIndex(),
         ];
     }
 }

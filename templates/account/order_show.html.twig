@@ -1,47 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ma commande - {% endblock %}
+{% block title %}Ma commande - {{ contact_company }}{% endblock %}
 
 {% block content %}
-<h1>Ma commande  {{ order.reference }}</h1>
-<a href="{{ path('account_order') }}">Retourner à mes commandes</a>
-<p>Statut de la commande : 
-  {% if order.state == 1 %}
-  Paiement accepté
-  {% elseif order.state == 2 %}
-  Préparation de la commande en cours
-  {% elseif order.state == 3 %}
-  Commande expédiée
-  {% endif %}
-</p>
-<p>Commande passée le : {{ order.createdAt|date('d/m/Y') }}</p>
-<p>Référence de ma commande : {{ order.reference }}</p>
-<p>Transporteur choisi : {{ order.carrierName }}</p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Produit</th>
-      <th scope="col">Quantité</th>
-      <th scope="col">Prix unitaire</th>
-      <th scope="col">Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for product in order.orderDetails %}  
-    <tr>
-      <td>{{ product.product }}</td>
-      <td>x{{ product.quantity }}</td>
-      <td>{{ (product.price / 100)|number_format(2, ',', '.') }} €</td>
-      <td>{{ (product.total / 100)|number_format(2, ',', '.') }} €</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="container command_show">
+  <p class="h3">Ma commande - {{ order.reference }}</p>
+  <p>Statut de la commande : 
+    {% if order.state == 1 %}
+    Paiement accepté
+    {% elseif order.state == 2 %}
+    Préparation de la commande en cours
+    {% elseif order.state == 3 %}
+    Commande expédiée
+    {% endif %}
+  </p>
+  <p>Commande passée le : {{ order.createdAt|date('d/m/Y') }}</p>
+  <p>Référence de ma commande : {{ order.reference }}</p>
+  <p>Transporteur choisi : {{ order.carrierName }}</p>
+  <div class="command_show-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Produit</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Prix unitaire</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in order.orderDetails %}  
+        <tr>
+          <td>{{ product.product }}</td>
+          <td>x{{ product.quantity }}</td>
+          <td>{{ (product.price / 100)|number_format(2, ',', '.') }} €</td>
+          <td>{{ (product.total / 100)|number_format(2, ',', '.') }} €</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="price-order_show">
+      <p>Sous-total : {{ (order.getTotal / 100)|number_format(2, ',', '.') }} €</p>
+      <p>Livraison : {{ (order.carrierprice / 100)|number_format(2, ',', '.') }} €</p>
+      <p>Total : {{ ((order.carrierPrice + order.getTotal) / 100)|number_format('2', ',', '.') }} €</p>
+    </div>
+  </div>
+  
 
-<p>Sous-total : {{ (order.getTotal / 100)|number_format(2, ',', '.') }} €</p>
-<p>Livraison : {{ (order.carrierprice / 100)|number_format(2, ',', '.') }} €</p>
-<p>Total : {{ ((order.carrierPrice + order.getTotal) / 100)|number_format('2', ',', '.') }} €</p>
+  <div class="return-command">
+    <a class="btn btn-second" href="{{ path('account_order') }}">Retourner à mes commandes</a>
+  </div>
+</div>
 
 {% endblock %}
 

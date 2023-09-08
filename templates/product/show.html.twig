@@ -1,23 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{product.name}} -
+{% block title %}{{product.name}} - {{ contact_company }}
 {% endblock %}
 
 {% block content %}
-{# {{ dump(othersCategory) }}
-{{ dump(othersProduct) }}
-{{ dump(product) }}
-{{ dump(products) }} #}
-    <div class="row">
-        <div class="container">
-            <div class="product-block1">
-            revoir le bloc1 comme page marque + crop with logo
-                <div class="product-block1_title">
-                    <h1>{{product.name}}</h1>   
-                </div>
-        
-                <div class="product-block1_background col-md-12">
-                    <div class="product-block1_background-left col-md-3">
+    <div class="container">
+        <div class="product-block1">
+            <div class="product-block1_title col-md-12">
+                <div class="product-block1_title-content col-lg-5">
+                    <h1 class="h2">{{product.name}}</h1>   
+                    <div class="infos">
                         <p class="category" style="color : {{ product.category.color }}">{{product.category.title}}</p>
                         <p class="alcohol">{{product.alcohol}} alc. vol</p>
                         <div class="btn-cart">
@@ -25,40 +17,46 @@
                             <p class="text-price">{{(product.price / 100)|number_format('2', ',', '.')}} € / <span class="text-price_unity">Caisse de 6 bouteilles</span></p>
                         </div>
                     </div>
-                    <div class="col-md-5 background">
-                        <img class="img-background" src="/uploads/{{ product.illustration }}" alt="{{product.name}}">
+                </div>
+                <div class="col-md-4 bottle-responsive-none">
+                    <img src="/uploads/{{ product.illustration2 }}">
+                </div>
+                <div class="background" style="background-color: {{ product.category.color }};">
+                <img class="bottle-responsive" src="/uploads/{{ product.illustration2 }}">
+                    <img class="mask" src="{{ asset('assets/img/logo-mask.svg') }}">
+                </div>
+            </div>
+            
+            {# {{product.illustration2}} #}
+            {#{{product.description}}#}
+        </div>
+        <div class="product-block2">
+            <div class="logo-grey">
+                <img src="{{ asset('assets/img/logo-grey.svg') }}">
+            </div>
+            <div class="row">
+                <div class="arome col-md-5">
+                    <h2 class="seo">{{product.category.title}}</h2>
+                    <p class="h3" style="color : {{ product.category.color }}">Arôme</p>
+                    <p>{{product.aroma | raw}}</p>
+
+                    <div class="card-aroma">
+                        <div class="card-aroma_content">
+                            <img class="background-icon" style="background-color : {{ product.category.color }}" src="{{ asset('assets/img/oeil.svg') }}"><p>{{product.aroma1 | raw}}</p>
+                        </div>
+                        <div class="card-aroma_content">
+                            <img class="background-icon" style="background-color : {{ product.category.color }}" src="{{ asset('assets/img/flamme.svg') }}"p>{{product.aroma2 | raw}}</p>
+                        </div>
+                        <div class="card-aroma_content">
+                            <img class="background-icon" style="background-color : {{ product.category.color }}" src="{{ asset('assets/img/bouche.svg') }}"><p>{{product.aroma3 | raw}}</p>
+                        </div>
                     </div>
                 </div>
-                
-                {# {{product.illustration2}} #}
-                {#{{product.description}}#}
-            </div>
-        </div>
-        <div class="container">
-            <div class="product-block2">
-                <div class="row">
-                    <div class="arome col-md-5">
-                        <h2 class="seo">{{product.category.title}}</h2>
-                        <p class="h3" style="color : {{ product.category.color }}">Arôme</p>
-                        <p>{{product.aroma | raw}}</p>
-
-                        <div class="card-aroma">
-                            <div class="card-aroma_content">
-                                <img class="background-icon" style="background-color : {{ product.category.color }}" src="{{ asset('assets/img/oeil.svg') }}"><p>{{product.aroma1 | raw}}</p>
-                            </div>
-                            <div class="card-aroma_content">
-                                <img class="background-icon" style="background-color : {{ product.category.color }}" src="{{ asset('assets/img/flamme.svg') }}"p>{{product.aroma2 | raw}}</p>
-                            </div>
-                            <div class="card-aroma_content">
-                                <img class="background-icon" style="background-color : {{ product.category.color }}" src="{{ asset('assets/img/bouche.svg') }}"><p>{{product.aroma3 | raw}}</p>
-                            </div>
-                        </div>
-rajouter le logo gris en fond
-                    </div>
-                    <div class="image col-md-2">
-                        <img src="/uploads/{{ product.illustration2 }}">
-                    </div>
-                    <div class="ingredients col-md-5">
+                <div class="image col-md-2">
+                    <img src="/uploads/{{ product.illustration2 }}">
+                </div>
+                <div class="flex col-md-5">
+                    <div class="ingredients">
                         <h2 class="seo">Bière artisanale bio</h2>
                         <p class="h3" style="color : {{ product.category.color }}">Ingrédients</p>
                         <p class="ingredients-content">{{product.ingredient | raw }}</p>
@@ -87,29 +85,46 @@ rajouter le logo gris en fond
     </div>
 
     <div class="product-block3">
-        Ici le bloc dégustation
+        <div class="container">
+            <div class="row content"> 
+                <div class="col-md-5">
+                    <h2 class="seo">{{ product.category.titleSeoCategory }}</h2>
+                    <p class="h2">{{ product.category.titleCategory }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="h2">{{ product.category.contentCategory | raw}}</p>
+                    <div class="img-block3">
+                        <img src="/uploads/{{ product.category.imgCategory }}">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
+
     <div class="product-block4">
         <div class="container-fluid">
             <div class="row product-block4_content">
                 <img class="img-left col-md-3" src="{{ asset('assets/img/chemical-1.jpg') }}">
-                <div class="content col-md-5">
+                <div class="container content col-md-5">
                     <h2 class="seo" style="color : {{ product.category.color }}">tradition</h2>
                     <p class="h2">{{product.titleSeo}}</p>
                     <p class="content-text">{{product.descriptionSeo | raw}}</p>
                 </div>
-                <img class="img-right col-md-3" src="{{ asset('assets/img/chemical-2.jpg') }}">
+                <div class="bloc-right col-md-3">
+                    <img class="img-right" src="{{ asset('assets/img/chemical-2.jpg') }}">
+                </div>
             </div>
         </div>
     </div>
 
-    <h3>Dans la même catégorie</h3>
-	<div>
-    faire un modèle de slider et faire passer les datas
-        {% for data in othersProducts %}
-        {{ dump(data) }}
+    <div class="slider-product">
+        <h3>Dans les autres catégories</h3>
+        <div id="slider-product">
+            {% for product in othersProducts %}
                 {% include 'product/miniature-slider.html.twig' %}
-        {% endfor %}
-	</div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

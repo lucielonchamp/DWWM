@@ -26,6 +26,8 @@ class StripeController extends AbstractController
             $this->redirectToRoute('order');
         }
 
+
+        // Voir la 404 avec /uploads dans la route
         foreach ($order->getOrderDetails()->getValues() as $product) {
             $product_object = $entityManager->getRepository(Product::class)->findOneBy(['name' => $product->getProduct()]);
             $product_for_stripe[] = [

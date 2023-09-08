@@ -2,7 +2,12 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_5_layout.html.twig']
     globals:
-        menu_service: '@App\Service\MenuService'
+        contact_company: "La Ch'timiste"
+        contact_address: ''
+        contact_zip: ''
+        contact_city: 'France'
+        contact_phone: '00 00 00 00 00'
+        contact_email: 'contact@lachtimiste.fr'
 
 when@test:
     twig:

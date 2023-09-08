@@ -1,18 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte - {% endblock %}
+{% block title %}Mon compte - {{ contact_company }}{% endblock %}
 
 {% block content %}
-<h1>Mon compte</h1>
-<p>
-	Bienvenue dans votre espace personnel,
-	{{ app.user.firstname }} {{ app.user.lastname }}.
-</p>
-{% if is_granted('ROLE_ADMIN') %}
-	<a href="/admin">Vous êtes administrateur, cliquer ici pour accéder au BackOffice</a>
-{% endif %}
-<a href="{{ path('account_password') }}">Modifier mon mot de passe</a>
-<a href="{{ path('account_address') }}">Gérer mes adresses</a>
-<a href="{{ path('account_order') }}">Mes commandes</a>
+<div class="container account">
+	<div class="account-title">
+		<p class="h2">Mon compte</p>
+		<p>
+			Bienvenue dans votre espace personnel,
+			{{ app.user.firstname }} {{ app.user.lastname }}.
+		</p>
+	</div>
+	<div class="account-menu">
+		{% if is_granted('ROLE_ADMIN') %}
+		<div class="account-bloc link-finder">
+			<i class="fa-solid fa-wrench"></i>
+			<a class="link-account" href="/admin">Administration</a>
+		</div>
+		{% endif %}
+		<div class="account-bloc link-finder">
+			<i class="fa-solid fa-user-shield"></i>
+			<a class="link-account" href="{{ path('account_password') }}">Informations et mot de passe</a>
+		</div>
+		<div class="account-bloc link-finder">
+			<i class="fa-solid fa-location-dot"></i>
+			<a class="link-account" href="{{ path('account_address') }}">Mes adresses</a>
+		</div>
+		<div class="account-bloc link-finder">
+			<i class="fa-solid fa-gift"></i>
+			<a class="link-account" href="{{ path('account_order') }}">Mes commandes</a>
+		</div>
+	</div>
+	
+</div>
+
 
 {% endblock %}

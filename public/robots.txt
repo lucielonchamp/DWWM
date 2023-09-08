@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /admin
+Disallow: /_profiler/*
+Disallow: /cart/*
+Disallow: /connexion
+Disallow: /inscription
+Disallow: /mot-de-passe-oublie
+Disallow: /assets/js/*
+Disallow: /assets/css/*
+Disallow: /mot-de-passe-oublie
+
+Allow: /
+Allow: /produit/*
+Allow: /nos-produits
+Allow: /nous-contacter
+Allow: /apropos
+Allow: /conditions-generales-de-vente
+
+Sitemap: https://www.example.com/sitemap.xml

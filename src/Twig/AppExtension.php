@@ -7,9 +7,9 @@ use App\Controller\Admin\CategoryCrudController;
 use App\Controller\Admin\PageCrudController;
 use App\Entity\Article;
 use App\Entity\Category;
-use App\Entity\Menu;
 use App\Entity\Page;
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\Collection;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
@@ -27,7 +27,8 @@ class AppExtension extends AbstractExtension
         private RouterInterface $router,
         private AdminUrlGenerator $adminUrlGenerator,
         private CategoryRepository $categoryRepository,
-        private Security $security
+        private Security $security,
+        private ProductRepository $productRepository,
     ) {
 
     }
@@ -39,50 +40,17 @@ class AppExtension extends AbstractExtension
             new TwigFunction('ea_edit', [$this, 'getAdminEditUrl']),
             new TwigFunction('entity_label', [$this, 'getEditCurrentEntityLabel']),
             new TwigFunction('menu_categories', [$this, 'getCategories']),
+            new TwigFunction('menu_products', [$this, 'getProducts']),
+            new TwigFunction('menu_productsIsBest', [$this, 'getProductsIsBest']),
         ];
     }
 
     public function getFilters(): array
     {
         return [
-            new TwigFilter('menuLink', [$this, 'menuLink']),
             new TwigFilter('categoriesToString', [$this, 'categoriesToString']),
             new TwigFilter('isCommentAuthor', [$this, 'isCommentAuthor']),
         ];
-    }
-
-    public function menuLink(Menu $menu): string
-    {
-        $url = $menu->getLink() ?: '#';
-
-        if ($url !== '#') {
-            return $url;
-        }
-
-        $page = $menu->getPage();
-
-        if ($page) {
-            $name = 'page_show';
-            $slug = $page->getSlug();
-        }
-
-        $article = $menu->getArticle();
-
-        if ($article) {
-            $name = 'article';
-            $slug = $article->getSlug();
-        }
-
-        $category = $menu->getCategory();
-
-        if ($category) {
-            $name = 'categories';
-            $slug = $category->getSlug();
-        }
-
-        return $this->router->generate($name, [
-            'slug' => $slug
-        ]);
     }
 
     public function categoriesToString(Collection $categories): string
@@ -134,6 +102,16 @@ class AppExtension extends AbstractExtension
     public function getCategories()
     {
         return $this->categoryRepository->findAll();
+    }
+
+    public function getProducts()
+    {
+        return $this->productRepository->findAll();
+    }
+
+    public function getProductsIsBest()
+    {
+        return $this->productRepository->findByIsBest(1);
     }
 
 }
