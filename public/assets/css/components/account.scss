@@ -7,6 +7,9 @@
         .fa-solid {
             font-size: 30px;
         }
+        @media (max-width: 1024px) {
+            flex-wrap: wrap;
+        }
     }
     &-title {
         text-align: center;

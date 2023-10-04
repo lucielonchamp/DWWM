@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const acceptButton = document.getElementById('acceptButton');
-    const declineButton = document.getElementById('declineButton');
 
     if (!sessionStorage.getItem('adulte')) {
         myModal.show();
@@ -16,11 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('storage', handleStorageChange);
 
         myModal.hide();
-    });
-
-    declineButton.addEventListener('click', function () {
-        sessionStorage.setItem('adulte', 'false');
-        window.addEventListener('storage', handleStorageChange);
     });
 
     function handleStorageChange(event) {

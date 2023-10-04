@@ -986,6 +986,11 @@ a:hover {
 .account-menu .fa-solid {
   font-size: 30px;
 }
+@media (max-width: 1024px) {
+  .account-menu {
+    flex-wrap: wrap;
+  }
+}
 .account-title {
   text-align: center;
 }
